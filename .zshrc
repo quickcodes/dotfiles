@@ -171,7 +171,7 @@ set_gnome_rand_wall(){
 }
 
 emojie(){
-  emoji="$(cat $HOME/.dotfiles/emojie | fzf | cut -d' ' -f1)"
+  emoji="$(cat $HOME/.local/share/emoji | fzf | cut -d' ' -f1)"
   echo "$emoji" | tr "\n" " " | xclip -sel c
 }
 
