@@ -20,7 +20,7 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 ## Current theme ---------------------------------------------#
 
 ## Load current theme files to get colors for bspwm
-source "$BSPDIR"/themes/current.bash
+source "$BSPDIR"/themes/blade.bash
 
 ## Get the wallpaper from theme file
 CURRENT_WALLPAPER="$wallpaper"
