@@ -1,10 +1,7 @@
 # dotfiles
 
-## Package required
-- stow
+## commands used
 ```
-yay -S stow 
+config add {file_name}
+config commit -m "message"
 ```
-
-## A video explains how to manage dotfiles using stow
-[stow](https://youtu.be/FHuwzbpTTo0)
