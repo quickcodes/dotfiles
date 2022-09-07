@@ -18,5 +18,5 @@ git clone --separate-git-dir=$HOME/dotfiles https://github.com/quickcodes/dotfil
 rsync --recursive --verbose --exclude '.git' tmpdotfiles/ $HOME/
 rm -r tmpdotfiles
 ```
-## A documentation for all setup
-[link](https://www.anand-iyer.com/blog/2018/a-simpler-way-to-manage-your-dotfiles.html)
+## A documentation for all setup [Click Here](https://www.anand-iyer.com/blog/2018/a-simpler-way-to-manage-your-dotfiles.html)
+
