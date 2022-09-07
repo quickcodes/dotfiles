@@ -184,7 +184,10 @@ bspfloat &
 
 
 # autostarts for trackpade natural scrolling
-xinput set-prop 11 310 1
-xinput set-prop 11 311 1
-xinput set-prop 13 310 1
-xinput set-prop 13 311 1
+xinput set-prop 12 310 1
+xinput set-prop 12 311 1
+xinput set-prop 14 310 1
+xinput set-prop 14 311 1
+
+# fast the press animation
+xset r rate 300 50
