@@ -184,10 +184,14 @@ bspfloat &
 
 
 # autostarts for trackpade natural scrolling
-xinput set-prop 12 310 1
-xinput set-prop 12 311 1
-xinput set-prop 14 310 1
-xinput set-prop 14 311 1
+xinput set-prop $(xinput | grep 'D Touchpad' | grep -Eo 'id=[0-9]*' | cut -c 4-) 309 1
+xinput set-prop $(xinput | grep 'D Touchpad' | grep -Eo 'id=[0-9]*' | cut -c 4-) 310 1
+
+xinput set-prop $(xinput | grep 'h Touchpad' | grep -Eo 'id=[0-9]*' | cut -c 4-) 309 1
+xinput set-prop $(xinput | grep 'h Touchpad' | grep -Eo 'id=[0-9]*' | cut -c 4-) 310 1
 
 # fast the press animation
 xset r rate 300 50
+
+# window swallow 
+pgrep bspswallow || bspswallow &
