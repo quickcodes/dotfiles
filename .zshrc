@@ -70,7 +70,10 @@ zstyle ':omz:update' mode disabled  # disable automatic updates
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(
+git
+zsh-syntax-highlighting
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -149,6 +152,8 @@ alias his="history | fzf | cut -c 8- | tr -d '\n' | cin"
 alias wlp='nitrogen --set-zoom-fill --random $HOME/Pictures/wallpapers'
 alias rec='ffmpeg -f x11grab -y -r 30 -s 1920x1080 -i :0.0 -vcodec huffyuv rec.avi'
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME' 
+# alias sxiv='swallow sxiv'
+# alias mpv='swallow mpv'
 
 fcd(){
   cd "$(find -type d | fzf)"
@@ -171,7 +176,7 @@ set_gnome_rand_wall(){
 }
 
 emojie(){
-  emoji="$(cat $HOME/.local/share/emoji | fzf | cut -d' ' -f1)"
+  emoji="$(cat $HOME/.local/share/emojie | fzf | cut -d' ' -f1)"
   echo "$emoji" | tr "\n" " " | xclip -sel c
 }
 
@@ -222,3 +227,4 @@ commands_info(){
   echo "\trecover deleted file \n\t\tsudo foremost -v -q -t jpg -i /dev/sda1 -o $HOME/Desktop/recovery"
   # echo "\n-----------------------------------------------"
 }
+
