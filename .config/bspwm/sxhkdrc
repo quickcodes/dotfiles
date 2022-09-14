@@ -178,3 +178,6 @@ super + shift + i
 # Custom Keyboard shortcuts
 super + alt + .
 	emojie
+
+ctrl + shift + j
+	nitrogen --set-zoom-fill --random $HOME/Pictures/wallpapers
