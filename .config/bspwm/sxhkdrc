@@ -58,13 +58,13 @@ ctrl + alt + l
 # Take a screenshot
 Print
 	takeshot --now
-	
+
 # Take screenshot in 5 second
-alt + Print	
+alt + Print
 	takeshot --in5
 
 # Take screenshot in 10 second
-shift + Print	
+shift + Print
 	takeshot --in10
 
 # Take screenshot of active window
@@ -78,7 +78,7 @@ ctrl + alt + Print
 # Brighness control
 XF86MonBrightness{Up,Down}
 	brightness{ --inc, --dec}
-	
+
 # Volume control
 XF86Audio{RaiseVolume,LowerVolume}
 	volume{ --inc, --dec}
@@ -88,7 +88,7 @@ XF86AudioMute
 
 XF86AudioMicMute
 	volume --toggle-mic
-	
+
 # Music control
 XF86Audio{Next,Prev,Play,Stop}
 	mpc {next,prev,toggle,stop}
@@ -110,7 +110,7 @@ ctrl + alt + Escape
 # Quit/Restart bspwm
 ctrl + shift + {q,r}
 	bspc {quit,wm -r}
-	
+
 # Split horizontal, vertical or cancel
 super + {h,v,q}
 	bspc node -p {east,south,cancel}
@@ -160,18 +160,18 @@ super + {_,shift + }{1-8}
 # Expanding windows
 super + control + {Left,Right,Up,Down}
 	bspc node -z {left -20 0,right 20 0,top 0 -20,bottom 0 20}
-	
+
 ## Shrinking windows
 super + alt + {Left,Right,Up,Down}
 	bspc node -z {left 20 0,right -20 0,top 0 20,bottom 0 -20}
-	
+
 ## Move floating windows
 alt + shift + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
 # Hide/Unhide Window
 super + shift + i
-	winmask		
+	winmask
 
 ##---------- EOF ----------##
 
@@ -181,3 +181,6 @@ super + alt + .
 
 ctrl + shift + j
 	nitrogen --set-zoom-fill --random $HOME/Pictures/wallpapers
+
+ctrl + shift + Print
+	maim --select | tee ~/Pictures/Screenshots/$(date +%s).png | xclip -selection clipboard -t image/png
