@@ -134,112 +134,18 @@ alias lm='ls -m'
 alias lr='ls -R'
 alias lg='ls -l --group-directories-first'
 
-# git
-alias gcl='git clone --depth 1'
-alias gi='git init'
-alias ga='git add'
-alias gc='git commit -m'
-alias gp='git push origin master'
 
-# additional custom
-alias cin='xclip -selection c'
-alias cout='xclip -selection clipboard -o'
-alias update='sudo pacman -Syyu'
-alias del='shred -zufn 3'
-alias hdd='cd /run/media/dhruv/1TB'
-alias fdel='rm -rf $(ls | fzf -m)'
-alias fcp='rsync --progress -auv'
-alias getpath="find -type f | fzf | sed 's/^..//g' | tr -d '\n' | cin"
-alias his="history | fzf | cut -c 8- | tr -d '\n' | cin"
-alias wlp='nitrogen --set-zoom-fill --random $HOME/Pictures/wallpapers'
-alias rec='ffmpeg -f x11grab -y -r 30 -s 1920x1080 -i :0.0 -vcodec huffyuv rec.avi'
-alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
-alias nvim_prev="fzf --preview='nvim {}'"
-# alias sxiv='swallow sxiv'
-# alias mpv='swallow mpv'
+# Read my aliases
+if [ -f ~/.config/my-aliases/aliases ];
+then
+	. ~/.config/my-aliases/aliases
+fi
 
-sync_web(){
-	cd $HOME/MyStuff/mysite && zola build && rsync -auP public/* root@dhruvcodes.me:/var/www/mysite
-}
+# Read my functions
+if [ -f ~/.config/my-aliases/func ];
+then
+	. ~/.config/my-aliases/func
+fi
 
-sync_file(){
-	cd $HOME/MyStuff && rsync -auP files/* root@dhruvcodes.me:/var/www/files
-}
 
-fcd(){
-  cd "$(find -type d | fzf)"
-}
-
-fnvim(){
-  nvim "$(find -type f | fzf)"
-}
-
-open(){
-  xdg-open "$(find -type f | fzf)"
-}
-
-plysong(){
-  pkill -f "https://live.musopen.org:8085/streamvbr0" || mpv "https://live.musopen.org:8085/streamvbr0"
-}
-
-set_gnome_rand_wall(){
-  DIR="$HOME/Pictures/wallpaper/"
-  BGD="$(ls $DIR/*.png | shuf -n1)"
-  cat $BGD > /home/dhruv/.config/wallpaper.png
-  gsettings set org.gnome.desktop.background picture-uri-dark "file:///home/dhruv/.config/wallpaper.png"
-  echo "Wallpaper set to $BGD"
-}
-
-emojie(){
-  emoji="$(cat $HOME/.local/share/emojie | fzf | cut -d' ' -f1)"
-  echo "$emoji" | tr "\n" " " | xclip -sel c
-}
-
-commands_info(){
-  # echo "-----------------------------------------------\n"
-  echo "Required packages :- "
-  echo "\tnitrogen youtube-dl mpv npm peerflix fzf tty-clock btop cbonsai foremosts"
-  echo "\n"
-
-  echo "Scripts :-"
-  echo "\twlp        - changes wallpaper"
-  echo "\tyt         - Youtube from terminal"
-  echo "\tnotflix    - stream torrent from terminal"
-  echo "\n"
-
-  echo "Alias :-"
-  echo "\tcin          - copy"
-  echo "\tcout         - paste"
-  echo "\tupdate       - update packages using pacman"
-  echo "\tdel          - delete any file permanently"
-  echo "\thdd          - cd into harddisk"
-  echo "\tfdel         - delete multiple files with fzf"
-  echo "\tfcp          - copy with progress"
-  echo "\tgetpath      - copy path of directory"
-  echo "\this          - copy any command from history"
-  echo "\twlp          - set random wallpaper from $HOME/Pictures/wallpapers"
-  # echo "\trec          - record screen using ffmpeg \n\t\t     res: 1920x1080 \n\t\t     output file name: rec.avi"
-  echo "\trec          - record screen using ffmpeg (res: 1920x1080) (output file: rec.avi)"
-  echo "\tfcd          - cool way of cd into any directory"
-  echo "\topen         - search and open any file"
-  echo "\tplysong      - play's background music"
-  echo "\tset_gnome_rand_wall - set random wlp for gnome dark theme (only for gnome)"
-  echo "\n"
-
-  echo "Being Cool with terminal :- "
-  echo "\ttty-clock -c"
-  echo "\tbtop --utf-force"
-  echo "\n"
-
-  echo "Usesfull Commands :-"
-  echo "\tcompress video   \n\t\tffmpeg -i silicon.mkv -vcodec libx265 -crf 28 out.mp4"
-  echo "\treduce half video size  \n\t\tfor f in *.mp4; do ffmpeg -i \"$f\" -vf \"scale=trunc(iw/4)*2:trunc(ih/4)*2\" -c:v libx265 -crf 28 \"edit/$f\"; done;"
-  echo "\toptimize jpg \n\t\t jpegoptim *.jpg"
-  echo "\tgnome wallpapers"
-  echo "\t\tlight theme: \n\t\t\tgsettings set org.gnome.desktop.background picture-uri \"file://...\""
-  echo "\t\tdark theme: \n\t\t\tgsettings set org.gnome.desktop.background picture-uri-dark \"file://...\""
-  echo "\tcheck kernal info \n\t\tuname -srm \n\t\thostnamectl"
-  echo "\trecover deleted file \n\t\tsudo foremost -v -q -t jpg -i /dev/sda1 -o $HOME/Desktop/recovery"
-  # echo "\n-----------------------------------------------"
-}
 
